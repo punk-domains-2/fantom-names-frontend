@@ -82,7 +82,7 @@
     </button>
 
     <!-- Connect Wallet -->
-    <button v-if="!isActivated" class="btn btn-primary btn-lg mt-3 btn-Disconnected" @click="open">Connect wallet</button>
+    <button v-if="!isActivated" class="btn btn-primary btn-lg mt-3 btn-Disconnected" data-bs-toggle="modal" data-bs-target="#connectModal">Connect wallet</button>
 
     <div v-if="isActivated && !isNetworkSupported" class="mt-4">
       <button class="btn btn-primary btn-lg btn-Disconnected" @click="changeNetwork(this.getTldChainName)">Switch to {{getTldChainName}}</button>

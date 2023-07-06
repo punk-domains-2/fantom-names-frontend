@@ -2,18 +2,81 @@
   <Navbar />
 
   <div class="main-container background-main">
+
+    <!-- Connect Wallet modal -->
+    <div class="modal fade" id="connectModal" tabindex="-1" aria-labelledby="connectModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Connect your wallet</h5>
+            <button id="closeConnectModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body row">
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
+              <img src="../assets/wallets/metamask.png" class="card-img-top card-img-wallet" alt="MetaMask">
+            </div>
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
+              <img src="../assets/wallets/bifrost.png" class="card-img-top card-img-wallet" alt="Bifrost">
+            </div> 
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
+              <img src="../assets/wallets/wc.png" class="card-img-top card-img-wallet" alt="Wallet Connect">
+            </div>
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
+              <img src="../assets/wallets/rabby.png" class="card-img-top card-img-wallet" alt="Rabby">
+            </div> 
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
+              <img src="../assets/wallets/brave.png" class="card-img-top card-img-wallet" alt="Brave">
+            </div>
+
+            <!--
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectCoinbase">
+              <img src="../assets/wallets/coinbase.png" class="card-img-top card-img-wallet" alt="Coinbase">
+            </div>
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
+              <img src="../assets/wallets/minerva.png" class="card-img-top card-img-wallet" alt="Minerva">
+            </div>
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
+              <img src="../assets/wallets/argent.png" class="card-img-top card-img-wallet" alt="Argent">
+            </div>
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
+              <img src="../assets/wallets/1inch.png" class="card-img-top card-img-wallet" alt="1inch">
+            </div>
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
+              <img src="../assets/wallets/imtoken.png" class="card-img-top card-img-wallet" alt="imToken">
+            </div>
+            -->
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
+              <img src="../assets/wallets/trust.png" class="card-img-top card-img-wallet" alt="Trust Wallet">
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END Connect Wallet modal -->
+
     <router-view></router-view>
 
     <Footer />
   </div>
   
-  <vdapp-board />
 </template>
 
 <script lang="ts">
-import { onMounted } from "vue";
 import { ethers } from 'ethers';
-import { useEthers, useWallet } from 'vue-dapp';
+import { useEthers, useWallet, MetaMaskConnector, WalletConnectConnector, CoinbaseWalletConnector } from 'vue-dapp';
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
@@ -27,7 +90,17 @@ export default {
     Footer
   },
 
-  created() {
+  mounted() {
+    if (!this.isActivated) {
+			if (localStorage.getItem("connected") == "metamask") {
+				this.connectMetaMask();
+			} else if (localStorage.getItem("connected") == "walletconnect") {
+				this.connectWalletConnect();
+			} else if (localStorage.getItem("connected") == "coinbase") {
+				this.connectCoinbase();
+			}
+		}
+
     this.fetchReferrer();
     this.setTldContract();
     this.fetchMinterContractData();
@@ -54,6 +127,24 @@ export default {
     ...mapMutations("user", ["setUserData"]),
     ...mapMutations("network", ["setNetworkData"]),
     ...mapMutations("tld", ["setTldContract"]),
+
+    async connectCoinbase() {
+			await this.connectWith(this.coinbaseConnector);
+			localStorage.setItem("connected", "coinbase"); // store in local storage to autoconnect next time
+			document.getElementById('closeConnectModal').click();
+		},
+
+		async connectMetaMask() {
+			await this.connectWith(this.mmConnector);
+			localStorage.setItem("connected", "metamask"); // store in local storage to autoconnect next time
+			document.getElementById('closeConnectModal').click();
+		},
+
+		async connectWalletConnect() {
+      document.getElementById('closeConnectModal').click();
+			await this.connectWith(this.wcConnector);
+			localStorage.setItem("connected", "walletconnect"); // store in local storage to autoconnect next time
+		},
 
     async fetchReferrer() {
       // check if any referral is present: ?ref=...
@@ -90,18 +181,42 @@ export default {
 
   setup() {
     const { address, chainId, isActivated } = useEthers();
-    const { connect } = useWallet();
+    const { connectWith } = useWallet();
     const { getFallbackProvider } = useChainHelpers();
 
-    onMounted(() => {
-      // if user already connected via MetaMask before, connect them automatically on the next visit
-      if (!isActivated.value && localStorage.getItem("connected") == "metamask") {
-        connect("metamask");
+    const coinbaseConnector = new CoinbaseWalletConnector({
+			appName: "Fantom Names",
+			jsonRpcUrl: "https://rpc.ankr.com/fantom",
+		});
+
+		const mmConnector = new MetaMaskConnector({
+			appUrl: "Fantom Names",
+		});
+
+    // wallet connect v2
+    // @TODO: make sure to add your own project ID (and verify your domain with wallet connect)
+		const wcConnector = new WalletConnectConnector({
+			projectId: 'aff0fd1035c24a0954db35a67067b0f0', // @TODO: use your own project ID!!!
+      chains: [250],
+      showQrModal: true,
+      qrModalOptions: {
+        themeMode: 'dark',
+        themeVariables: undefined,
+        chainImages: undefined,
+        desktopWallets: undefined,
+        walletImages: undefined,
+        mobileWallets: undefined,
+        enableExplorer: true,
+        explorerAllowList: undefined,
+        tokenImages: undefined,
+        privacyPolicyUrl: undefined,
+        explorerDenyList: undefined,
+        termsOfServiceUrl: undefined,
       }
-    })
+		});
 
     return {
-      address, chainId, connect, getFallbackProvider, isActivated
+      address, chainId, coinbaseConnector, connectWith, getFallbackProvider, isActivated, mmConnector, wcConnector
     }
   },
 
@@ -115,8 +230,14 @@ export default {
     },
 
     chainId(newVal, oldVal) {
-      if (!this.isActivated && localStorage.getItem("connected") == "metamask") {
-        this.connect("metamask");
+      if (!this.isActivated) {
+        if (localStorage.getItem("connected") == "metamask") {
+          this.connectMetaMask();
+        } else if (localStorage.getItem("connected") == "walletconnect") {
+          this.connectWalletConnect();
+        } else if (localStorage.getItem("connected") == "coinbase") {
+          this.connectCoinbase();
+        }
       }
 
       if (this.chainId >= 1) {

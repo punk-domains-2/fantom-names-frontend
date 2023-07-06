@@ -32,9 +32,7 @@ const options = {
 app.use(router)
 app.use(store)
 
-app.use(VueDapp, {
-  infuraId: "not-needed-but-should-not-be-empty-either", // non-empty string for WalletConnect
-})
+app.use(VueDapp);
 
 app.use(Toast, options);
 

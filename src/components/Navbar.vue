@@ -53,7 +53,7 @@
               </ul>
             </div>
 
-            <button v-if="!isActivated" class="btn btn-primary navbar-menu-btn" @click="open">Connect wallet</button>
+            <button v-if="!isActivated" class="btn btn-primary navbar-menu-btn" data-bs-toggle="modal" data-bs-target="#connectModal">Connect wallet</button>
 
             <div v-if="isActivated" class="btn-group mx-2 navbar-menu-btn">
               <router-link tag="button" class="btn btn-primary" to="/send-tokens">Send Tokens</router-link>
