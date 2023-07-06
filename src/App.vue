@@ -16,49 +16,49 @@
           <div class="modal-body row">
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
-              <img src="../assets/wallets/metamask.png" class="card-img-top card-img-wallet" alt="MetaMask">
+              <img src="./assets/wallets/metamask.png" class="card-img-top card-img-wallet" alt="MetaMask">
             </div>
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
-              <img src="../assets/wallets/bifrost.png" class="card-img-top card-img-wallet" alt="Bifrost">
+              <img src="./assets/wallets/bifrost.png" class="card-img-top card-img-wallet" alt="Bifrost">
             </div> 
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
-              <img src="../assets/wallets/wc.png" class="card-img-top card-img-wallet" alt="Wallet Connect">
+              <img src="./assets/wallets/wc.png" class="card-img-top card-img-wallet" alt="Wallet Connect">
             </div>
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
-              <img src="../assets/wallets/rabby.png" class="card-img-top card-img-wallet" alt="Rabby">
+              <img src="./assets/wallets/rabby.png" class="card-img-top card-img-wallet" alt="Rabby">
             </div> 
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
-              <img src="../assets/wallets/brave.png" class="card-img-top card-img-wallet" alt="Brave">
+              <img src="./assets/wallets/brave.png" class="card-img-top card-img-wallet" alt="Brave">
             </div>
 
             <!--
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectCoinbase">
-              <img src="../assets/wallets/coinbase.png" class="card-img-top card-img-wallet" alt="Coinbase">
+              <img src="./assets/wallets/coinbase.png" class="card-img-top card-img-wallet" alt="Coinbase">
             </div>
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
-              <img src="../assets/wallets/minerva.png" class="card-img-top card-img-wallet" alt="Minerva">
+              <img src="./assets/wallets/minerva.png" class="card-img-top card-img-wallet" alt="Minerva">
             </div>
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
-              <img src="../assets/wallets/argent.png" class="card-img-top card-img-wallet" alt="Argent">
+              <img src="./assets/wallets/argent.png" class="card-img-top card-img-wallet" alt="Argent">
             </div>
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
-              <img src="../assets/wallets/1inch.png" class="card-img-top card-img-wallet" alt="1inch">
+              <img src="./assets/wallets/1inch.png" class="card-img-top card-img-wallet" alt="1inch">
             </div>
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
-              <img src="../assets/wallets/imtoken.png" class="card-img-top card-img-wallet" alt="imToken">
+              <img src="./assets/wallets/imtoken.png" class="card-img-top card-img-wallet" alt="imToken">
             </div>
             -->
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
-              <img src="../assets/wallets/trust.png" class="card-img-top card-img-wallet" alt="Trust Wallet">
+              <img src="./assets/wallets/trust.png" class="card-img-top card-img-wallet" alt="Trust Wallet">
             </div>
             
           </div>
