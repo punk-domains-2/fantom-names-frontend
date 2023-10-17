@@ -23,10 +23,6 @@
               <img src="./assets/wallets/bifrost.png" class="card-img-top card-img-wallet" alt="Bifrost">
             </div> 
 
-            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
-              <img src="./assets/wallets/wc.png" class="card-img-top card-img-wallet" alt="Wallet Connect">
-            </div>
-
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
               <img src="./assets/wallets/rabby.png" class="card-img-top card-img-wallet" alt="Rabby">
             </div> 
@@ -35,9 +31,18 @@
               <img src="./assets/wallets/brave.png" class="card-img-top card-img-wallet" alt="Brave">
             </div>
 
-            <!--
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectMetaMask">
+              <img src="./assets/wallets/zerion.png" class="card-img-top card-img-wallet" alt="Zerion">
+            </div>
+
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectCoinbase">
               <img src="./assets/wallets/coinbase.png" class="card-img-top card-img-wallet" alt="Coinbase">
+            </div>
+
+            <!--
+
+            <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
+              <img src="./assets/wallets/wc.png" class="card-img-top card-img-wallet" alt="Wallet Connect">
             </div>
 
             <div class="card col-6 cursor-pointer wallet-img-wrapper" @click="connectWalletConnect">
@@ -190,7 +195,7 @@ export default {
 		});
 
 		const mmConnector = new MetaMaskConnector({
-			appUrl: "Fantom Names",
+			appUrl: "https://fantomnames.org",
 		});
 
     // wallet connect v2
