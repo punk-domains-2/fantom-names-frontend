@@ -5,7 +5,7 @@
   <div class="row mt-3">
     <div class="col-md-8 offset-md-2">
       <p>
-        FantomNames.org is a Web3 Social username service where anybody can mint their very own web3 domain username with a .fantom extension.
+        fantomname.org is a Web3 Social username service where anybody can mint their very own web3 domain username with a .fantom extension.
       </p>
 
       <p>

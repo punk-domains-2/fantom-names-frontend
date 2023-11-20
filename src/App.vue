@@ -195,7 +195,7 @@ export default {
 		});
 
 		const mmConnector = new MetaMaskConnector({
-			appUrl: "https://fantomnames.org",
+			appUrl: "https://fantomname.org",
 		});
 
     // wallet connect v2

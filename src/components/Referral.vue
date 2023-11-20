@@ -12,8 +12,8 @@
           <div class="col-md-6 offset-md-3">
             <input 
               class="form-control text-center clipboard"
-              :value="'https://fantomnames.org/?ref=' + this.getNameOrAddress"
-              @click="copyToClipboard('https://fantomnames.org/?ref=' + this.getNameOrAddress)"
+              :value="'https://fantomname.org/?ref=' + this.getNameOrAddress"
+              @click="copyToClipboard('https://fantomname.org/?ref=' + this.getNameOrAddress)"
               readonly
             >
           </div>
