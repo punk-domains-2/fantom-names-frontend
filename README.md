@@ -1,4 +1,4 @@
-# Fantom Names frontend
+# FantomName.org frontend
 
 Frontend for .fantom domain service powered by the [Punk Domains protocol](https://punk.domains).
 

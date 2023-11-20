@@ -5,7 +5,7 @@
   <div class="row mt-3">
     <div class="col-md-8 offset-md-2">
       <p>
-        fantomname.org is a Web3 Social username service where anybody can mint their very own web3 domain username with a .fantom extension.
+        FantomName.org is a Web3 Social username service where anybody can mint their very own web3 domain username with a .fantom extension.
       </p>
 
       <p>
@@ -36,7 +36,7 @@
       </p>
 
       <p>
-        The Fantom Names service is built on top of the Punk Domains protocol that is the go-to protocol for many big projects like 
+        The FantomName.org service is built on top of the Punk Domains protocol that is the go-to protocol for many big projects like 
         KlimaDAO, Smol Brains, Layer2DAO and more.
       </p>
 

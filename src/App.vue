@@ -190,7 +190,7 @@ export default {
     const { getFallbackProvider } = useChainHelpers();
 
     const coinbaseConnector = new CoinbaseWalletConnector({
-			appName: "Fantom Names",
+			appName: "FantomName.org",
 			jsonRpcUrl: "https://rpc.ankr.com/fantom",
 		});
 
