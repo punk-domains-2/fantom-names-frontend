@@ -93,9 +93,7 @@ export default function useChainHelpers() {
       } else if (networkId === 250) {
         // Fantom Mainnet
         urls = [
-          "https://rpc.ankr.com/fantom",
-          "https://rpcapi.fantom.network",
-          "https://rpc.ftm.tools"
+          "https://rpc.fantom.network"
         ];
       } else if (networkId === 4002) {
         // Fantom Testnet
